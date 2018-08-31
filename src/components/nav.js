@@ -9,14 +9,11 @@ class Nav extends Component {
          const { auth, signIn, signOut} = this.props;
 
          if(auth){
-            <button onClick={signOut} className="btn orange darken-2">Sign Out</button>
+            return <button onClick={signOut} className="btn orange darken-2">Sign Out</button>
          }
 
-         return  <button onClick={signIn} className="btn blue darken-2">Sign In</button>
-
-
+            return <button onClick={signIn} className="btn green lighten-2">Sign In</button>
      }
-
 
     render(){
         return (
@@ -34,7 +31,7 @@ class Nav extends Component {
                             <Link to="/secret-list">Secret List</Link>
                         </li>
                         <li>
-                            <Link to="/movie-quotes">Movie Quote</Link>
+                            <Link to="/movie-quote">Movie Quote</Link>
                         </li>
                         <li>
                             <Link to="/sign-up">Sign Up</Link>
