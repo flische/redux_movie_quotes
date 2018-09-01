@@ -1,18 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
 
 class Nav extends Component {
 
-     renderAuthButtons(){
+     renderLinks(){
          const { auth, signIn, signOut} = this.props;
 
          if(auth){
-            return <button onClick={signOut} className="btn orange darken-2">Sign Out</button>
+            return (
+                <Fragment>
+                    <li>
+                        <Link to="/secret-list">Secret List</Link>
+                    </li>
+                    <li>
+                        <Link to="/movie-quote">Movie Quote</Link>
+                    </li>
+                    <li>
+                        <button onClick={signOut} className="btn orange darken-2">Sign Out</button>
+                    </li>
+                </Fragment>
+            );
          }
-
-            return <button onClick={signIn} className="btn green lighten-2">Sign In</button>
+            return (
+                <Fragment>
+                    <li>
+                        <Link to="/sign-in">Sign In</Link>
+                    </li>
+                    <li>
+                        <Link to="/sign-up">Sign Up</Link>
+                    </li>
+                </Fragment>
+            );
      }
 
     render(){
@@ -27,18 +47,7 @@ class Nav extends Component {
                         <li>
                             <Link to="/about">About</Link>
                         </li>
-                        <li>
-                            <Link to="/secret-list">Secret List</Link>
-                        </li>
-                        <li>
-                            <Link to="/movie-quote">Movie Quote</Link>
-                        </li>
-                        <li>
-                            <Link to="/sign-up">Sign Up</Link>
-                        </li>
-                        <li>
-                           {this.renderAuthButtons()}
-                        </li>
+                        {this.renderLinks()}
                     </ul>
                 </div>
             </nav>
